@@ -1,0 +1,93 @@
+@import "_base";
+@import "compass/reset";
+
+$bordercolor: #f3f3ec;
+$tabtitlecolor: #4b4b4a;
+
+body {
+	@include container;
+	font-family: Georgia, sans-serif;
+	
+	h1 {
+		font-size: 2em;
+		margin: 1em 0;
+	}
+	
+	p {
+		line-height: 1.5em;
+	}
+}
+
+.tabbed {
+	border: 1px solid $bordercolor;
+	color: #282828;
+	@include span(100%);
+	
+	ul.tab-row {
+		list-style: none;
+		// No tables for layout, right? Right?
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+		
+		li {
+			display: table-cell;
+			
+			&.ui-state-active {
+				a {
+					background: white;
+				}
+			}
+			
+			a {
+				display: block;
+				text-align: center;
+				text-decoration: none;
+				color: $tabtitlecolor;
+				background: $bordercolor;
+				padding: 0.333em;
+				
+				@include breakpoint(max-width $bp-tiny) {
+					font-size: 1.5em;
+				}
+			}
+		}
+	}
+	
+	.tab-pane {
+		line-height: 2em;
+
+		header {
+			background: $bordercolor;
+			text-align: center;
+			color: $tabtitlecolor;
+		}
+		
+		ol {
+			margin: 0 1em;
+			list-style-type: none;
+			
+			li {
+				padding-bottom: 0.666em;
+				margin-top: 0.334em;
+				border-bottom: 1px solid $bordercolor;
+				
+				// This may or may not be compatible with all browsers, but it can be simulated with classes.
+				// I'm not doing it here to keep things concise.
+				&:last-child {
+					border-bottom: 0;
+				}
+				
+				.item-number {
+					width: 1.5em;
+					display: inline-block;
+				}
+				
+				a {
+					text-decoration: none;
+					color: #282828;
+				}
+			}
+		}
+	}
+}
